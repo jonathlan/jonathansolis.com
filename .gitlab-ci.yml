@@ -25,6 +25,7 @@ deploy_staging:
   - master
 
 deploy_prod:
+  image: mwienk/docker-lftp
   stage: deploy
   script:
     - echo "Deploy to production server"
