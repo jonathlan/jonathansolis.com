@@ -16,7 +16,7 @@ deploy_staging:
   stage: deploy
   script:
     - echo "Deploy to staging server"
-    - lftp -u $JS_STAGE_FTP_U,$JS_STAGE_FTP_PWD $JS_ADD -e "set ftp:ssl-allow no ; mirror -e -R -x .gitlab-ci.yml -p ./ / ; quit" 
+    - lftp -u $JS_STAGE_FTP_U,$JS_STAGE_FTP_PWD $JS_ADD -e "set ftp:ssl-allow no ; mirror -e -R -x .gitlab-ci.yml -x .git -p ./ / ; quit" 
     - echo "Deployment complete"
   environment:
     name: staging
