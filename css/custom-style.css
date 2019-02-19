@@ -26,7 +26,8 @@ html, body {
     }
 }
 .head{
-    background-color: cornflowerblue;
+    background-color: #2fa3ee;
+    color: white;
 }
 h1, h5{
     text-align: center;  
