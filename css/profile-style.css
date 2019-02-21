@@ -4,7 +4,7 @@ html, body {
     height: 100%;
 }
 body{
-    background-color: cadetblue;
+    background-color: #2fa3ee;
 }
 .card {
     position: absolute;
@@ -17,4 +17,16 @@ body{
 }
 .icons{
     font-size: 30px;
+}
+a:link 
+{
+    color: #2fa3ee;
+}
+a:visited 
+{
+    color: black;
+}
+a:hover 
+{
+    color: black;
 }
