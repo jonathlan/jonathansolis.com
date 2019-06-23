@@ -11,12 +11,13 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 55%;
 }
 .card-title, .card-text, .icons{
     text-align: center;
 }
 .icons{
-    font-size: 30px;
+    font-size: 40px;
 }
 a:link 
 {
