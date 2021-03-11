@@ -16,7 +16,7 @@ deploy_staging:
   stage: deploy
   script:
     - echo "Deploy to staging server"
-    - lftp -u $JS_STAGE_FTP_U,$JS_STAGE_FTP_PWD $JS_ADD -e "set ftp:ssl-allow no ; mirror -e -R -x .gitlab-ci.yml -x .git -x languages/ -p ./ / ; quit" 
+    - lftp -u $JS_STAGE_FTP_U,$JS_STAGE_FTP_PWD $JS_ADD -e "set ftp:ssl-allow no ; mirror -e -R -x .gitlab-ci.yml -x .git -x languages/ -x blog/ -p ./ / ; quit"
     - echo "Deployment complete"
   environment:
     name: staging
@@ -29,7 +29,7 @@ deploy_prod:
   stage: deploy
   script:
     - echo "Deploy to production server"
-    - lftp -u $JS_PROD_FTP_U,$JS_PROD_FTP_PWD $JS_ADD -e "set ftp:ssl-allow no ; mirror -e -R -x .gitlab-ci.yml -x .git -x languages/ -p ./ / ; quit" 
+    - lftp -u $JS_PROD_FTP_U,$JS_PROD_FTP_PWD $JS_ADD -e "set ftp:ssl-allow no ; mirror -e -R -x .gitlab-ci.yml -x .git -x languages/ -x blog/ -p ./ / ; quit"
     - echo "Deployment to production complete"
   environment:
     name: production
