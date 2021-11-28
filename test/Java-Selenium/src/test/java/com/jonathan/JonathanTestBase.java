@@ -1,5 +1,7 @@
 package com.jonathan;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,13 +9,11 @@ import java.util.InvalidPropertiesFormatException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Before;
 import org.junit.After;
-import static org.junit.Assert.assertTrue;
-
+import org.junit.Before;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import com.eclipsesource.json.JsonObject;
 import com.jonathan.pages.JonathanHomePage;
