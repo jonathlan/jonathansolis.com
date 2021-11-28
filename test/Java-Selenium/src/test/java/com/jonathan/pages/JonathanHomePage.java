@@ -9,7 +9,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-//import helpers.Locators;
 
 public class JonathanHomePage {
 	WebDriver driver;
@@ -44,4 +43,5 @@ public class JonathanHomePage {
 			return true;
 		return false;
 	}
+
 }

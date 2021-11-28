@@ -1,4 +1,4 @@
-package com.jonathan.test;
+package com.jonathan;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -31,7 +31,7 @@ public class JonathanTestBase {
 	{
 		/*Load Properties*/
 		String projectDir = System.getProperty("user.dir");
-		String configFile = projectDir + "/src/data/config.json";
+		String configFile = projectDir + "/src/test/resources/config.json";
 		jProp = properties.loadFromJSon(configFile);
 		
 		boolean propertiesLoaded = false;
