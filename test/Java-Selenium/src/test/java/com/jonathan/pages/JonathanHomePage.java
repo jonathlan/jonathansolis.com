@@ -43,5 +43,14 @@ public class JonathanHomePage {
 			return true;
 		return false;
 	}
+	
+	public boolean validTitle(String expectedTitle)
+	{
+		String actualTitle = driver.getTitle();
+		if (actualTitle.equalsIgnoreCase(expectedTitle))
+			return true;
+		else
+			return false;
+	}
 
 }

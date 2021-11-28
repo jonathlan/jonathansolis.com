@@ -22,4 +22,15 @@ public class JonathanTests extends JonathanTestBase {
 		setUpPhase2("Chrome", url);		
 		assertTrue("Article not found", jHomePage.blogIconURL());
 	}
+	
+	@Test
+	public void titleIsCorrect()
+	{
+		String url = jProp.get("MAIN_URL").asString();
+		setUpPhase2("Chrome", url);
+		
+		String expectedTitle = "Jonathan Solis -";
+		
+		assertTrue("HomePage title is not valid", jHomePage.validTitle(expectedTitle));
+	}
 }
