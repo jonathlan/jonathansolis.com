@@ -29,7 +29,7 @@ public class JonathanTests extends JonathanTestBase {
 		String url = jProp.get("MAIN_URL").asString();
 		setUpPhase2("Chrome", url);
 		
-		String expectedTitle = "Jonathan Solis -";
+		String expectedTitle = "Jonathan Solis";
 		
 		assertTrue("HomePage title is not valid", jHomePage.validTitle(expectedTitle));
 	}
