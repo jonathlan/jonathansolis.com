@@ -19,6 +19,7 @@ import com.eclipsesource.json.JsonObject;
 import com.jonathan.pages.JonathanHomePage;
 
 import helpers.Properties;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class JonathanTestBase {
 	protected WebDriver driver = null;
@@ -57,6 +58,8 @@ public class JonathanTestBase {
 	{
 		switch (browser){
 		case "Chrome":
+			WebDriverManager.chromedriver().setup();
+			
 			ChromeOptions chromeOptions = new ChromeOptions();
 			List<String> arguments = new ArrayList<String>();
 			arguments.add("--disable-notifications");
