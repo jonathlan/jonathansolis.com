@@ -7,6 +7,8 @@ import org.junit.Test;
 
 public class JonathanTests extends JonathanTestBase {
 	
+	// Home Page
+	
 	@Test
 	public void FindCoverPhoto() 
 	{
@@ -33,4 +35,17 @@ public class JonathanTests extends JonathanTestBase {
 		
 		assertTrue("HomePage title is not valid", jHomePage.validTitle(expectedTitle));
 	}
+	
+	// Blog home page
+	@Test
+	public void blogTitleIsCorrect()
+	{
+		String url = jProp.get("BLOG_URL").asString();
+		setUpPhase2("Chrome", url);
+		
+		String expectedTitle = "Blog - Jonathan Solis";
+		
+		assertTrue("Blog home page title is not valid", blogPage.validTitle(expectedTitle));
+	}
+	
 }

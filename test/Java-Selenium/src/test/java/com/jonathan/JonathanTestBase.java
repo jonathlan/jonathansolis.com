@@ -16,6 +16,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import com.eclipsesource.json.JsonObject;
+import com.jonathan.pages.BlogPage;
 import com.jonathan.pages.JonathanHomePage;
 
 import helpers.Properties;
@@ -25,7 +26,8 @@ public class JonathanTestBase {
 	protected WebDriver driver = null;
 	protected Properties properties = new Properties();
 	protected JsonObject jProp;
-	protected JonathanHomePage jHomePage;	
+	protected JonathanHomePage jHomePage;
+	protected BlogPage blogPage;
 	
 	@Before
 	public void setupPhase1()  throws InvalidPropertiesFormatException, FileNotFoundException, IOException
@@ -52,6 +54,7 @@ public class JonathanTestBase {
 		
 		/*Pages setup*/
 		jHomePage = new JonathanHomePage(driver);
+		blogPage = new BlogPage(driver);
 	}
 	
 	private boolean driverSetup(String browser)
