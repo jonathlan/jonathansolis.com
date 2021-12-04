@@ -1,5 +1,7 @@
 package com.jonathan.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -28,6 +30,9 @@ public class JonathanHomePage {
 	@FindBy (how = How.XPATH, using = "//a[@href='https://jonathansolis.com/blog/']/i[@class='fab fa-wordpress']")
 	WebElement blogIcon;
 	
+	@FindBy(how = How.XPATH, using = "//p[@class='icons']")
+	WebElement icons;
+	
 	// Methods
 	public boolean fotoFound()
 	{
@@ -48,6 +53,23 @@ public class JonathanHomePage {
 	{
 		String actualTitle = driver.getTitle();
 		if (actualTitle.equalsIgnoreCase(expectedTitle))
+			return true;
+		else
+			return false;
+	}
+	
+	/**
+	 * Validates that home page has the expected number of icons.
+	 * @param numOfIcons The expected number of icons
+	 * @return
+	 * A boolean true if the number of icons in the homepage corresponds to numOfIcons,
+	 *  false otherwise.
+	 */
+	public boolean hasEnoughIcons(int numOfIcons) {
+		List<WebElement> actualIcons = 
+				icons.findElements(By.xpath("./a/i"));
+		
+		if(actualIcons.size() == numOfIcons)
 			return true;
 		else
 			return false;

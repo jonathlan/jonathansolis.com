@@ -36,6 +36,16 @@ public class JonathanTests extends JonathanTestBase {
 		assertTrue("HomePage title is not valid", jHomePage.validTitle(expectedTitle));
 	}
 	
+	@Test
+	public void numberOfIconsIsCorrect()
+	{
+		String url = jProp.get("MAIN_URL").asString();
+		setUpPhase2("Chrome", url);
+		
+		assertTrue("Number of icons in the home page is not correct.", 
+				jHomePage.hasEnoughIcons(7));
+	}
+	
 	// Blog home page
 	@Test
 	public void blogTitleIsCorrect()
