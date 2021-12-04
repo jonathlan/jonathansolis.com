@@ -48,4 +48,13 @@ public class JonathanTests extends JonathanTestBase {
 		assertTrue("Blog home page title is not valid", blogPage.validTitle(expectedTitle));
 	}
 	
+	@Test
+	public void numberOfArticlesIsCorrect()
+	{
+		String url = jProp.get("BLOG_URL").asString();
+		setUpPhase2("Chrome", url);
+		
+		assertTrue("Number of articles in blog's home page is not correct", blogPage.hasEnoughArticles(10));
+	}
+	
 }
