@@ -65,7 +65,7 @@ public class JonathanTests extends JonathanTestBase {
 		setUpPhase2("Chrome", url);
 		
 		assertTrue("Number of articles in blog's home page is not correct", 
-				blogPage.hasEnoughArticles(2));
+				blogPage.hasEnoughArticles(10));
 	}
 	
 }
