@@ -64,7 +64,8 @@ public class JonathanTests extends JonathanTestBase {
 		String url = jProp.get("BLOG_URL").asString();
 		setUpPhase2("Chrome", url);
 		
-		assertTrue("Number of articles in blog's home page is not correct", blogPage.hasEnoughArticles(10));
+		assertTrue("Number of articles in blog's home page is not correct", 
+				blogPage.hasEnoughArticles(2));
 	}
 	
 }
