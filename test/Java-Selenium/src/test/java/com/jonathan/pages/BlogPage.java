@@ -27,9 +27,12 @@ public class BlogPage {
 	WebElement articles;
 	
 	// Methods
+	
 	/**
-	 * @param expectedTitle
+	 * Validates the title in the page 
+	 * @param expectedTitle The expected title
 	 * @return
+	 * A boolean true if the page's title corresponds to expectedTitle
 	 */
 	public boolean validTitle(String expectedTitle)
 	{
