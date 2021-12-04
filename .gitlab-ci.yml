@@ -53,6 +53,5 @@ deploy_prod:
   environment:
     name: production
     url: http://jonathansolis.com
-  when: manual
   only:
   - master
