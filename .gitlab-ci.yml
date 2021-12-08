@@ -20,6 +20,7 @@ publish_stag:
     url: http://staging.jonathansolis.com
   only:
   - master
+  - development
 
 generic_test:
   variables:
