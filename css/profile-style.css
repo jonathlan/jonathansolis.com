@@ -32,3 +32,8 @@ html, body {
 {
     color: black;
 }
+
+.card-scroll{
+    max-height: 24em;
+    overflow-y: auto;
+}
