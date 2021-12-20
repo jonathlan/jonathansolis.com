@@ -7,24 +7,25 @@ body{
 .navbar-collapse {
   flex-direction: column;
 }
+
 .navbar-expand-md .navbar-nav {
   flex-direction: column;
 }
 
+/* Main */
 #main .icons{
     font-size: 40px;
 }
-#main a:link 
-{
-    color: #2fa3ee;
-}
-#main a:visited 
+
+#main a:link,
+a:visited
 {
     color: black;
 }
+
 #main a:hover 
 {
-    color: black;
+    color: #2fa3ee;
 }
 
 .card-scroll{
