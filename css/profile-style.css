@@ -12,6 +12,10 @@ body{
   flex-direction: column;
 }
 
+.radius {
+    border-radius: .25rem;
+}
+
 /* Main */
 #main .icons{
     font-size: 40px;
