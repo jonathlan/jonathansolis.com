@@ -2,6 +2,15 @@ body{
     background-color: #2fa3ee;
 }
 
+/*Navbar settings*/
+.navbar,
+.navbar-collapse {
+  flex-direction: column;
+}
+.navbar-expand-md .navbar-nav {
+  flex-direction: column;
+}
+
 #main .icons{
     font-size: 40px;
 }
