@@ -36,3 +36,13 @@ a:visited
     max-height: 24em;
     overflow-y: auto;
 }
+
+/* Button */
+.btn-custom {
+    color: black;
+}
+
+.btn-custom:hover,
+.btn-custom:active {
+    color: #2fa3ee;
+}
