@@ -3,11 +3,6 @@ body{
 }
 
 /*Navbar settings*/
-.navbar,
-.navbar-collapse {
-  flex-direction: column;
-}
-
 .navbar-expand-md .navbar-nav {
   flex-direction: column;
 }
