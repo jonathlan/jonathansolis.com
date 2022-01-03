@@ -3,18 +3,22 @@
 
 <head>
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-WFWZNP6');</script>
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WFWZNP6');</script>
     <!-- End Google Tag Manager -->
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-     <!-- Bootstrap CSS -->
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- Personal CSS -->
     <link rel="stylesheet" href="css/profile-style.css">
     <!-- Font Awesome -->
@@ -26,101 +30,147 @@
 
 <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WFWZNP6"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WFWZNP6" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    
+
+    <!-- Menu -->
+    <nav class="navbar navbar-light bg-light radius sticky-top justify-content-center">
+        <div class="nav flex-col" id="v-pills-tab">           
+            <button class="btn btn-custom active" id="btn-about" type="button" onclick='window.location="#about"'>
+                <i class="fas fa-user"></i></br>
+                About
+            </button>
+            <button class="btn btn-custom active" id="btn-about" type="button" onclick='window.location="#fun-facts"'>
+                <i class="fas fa-tachometer-alt"></i></br>
+                Fun Facts
+            </button>
+            <button class="btn btn-custom active" id="btn-about" type="button" onclick='window.location="#blog"'>
+                <i class="fas fa-feather-alt"></i></br>
+                Blog
+            </button>
+            <button class="btn btn-custom active" id="btn-about" type="button" onclick='window.location="#contact"'>
+                <i class="fas fa-comment-dots"></i></br>
+                Contact
+            </button>
+        </div>
+    </nav>
+    <!-- /Menu -->
+
     <div id="container" class="container mt-md-4">
         <div class="row">
-            <!-- Menu -->
-            <div class="col-md-2 mb-2 mt-3 px-0">
-                <nav class="navbar navbar-light bg-light radius justify-content-center">
-                    <div id="nav-menu">
-                        <div class="d-flex">
-                            <div class="nav flex-sm-row flex-md-column" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                              <button class="btn btn-custom mx-1 my-1 active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">
-                                  <i class="fas fa-user"></i></br>
-                                  About
-                                </button>
-                              <button class="btn btn-custom mx-1 my-1" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">
-                                  <i class="fas fa-tachometer-alt"></i></br>
-                                  Fun Facts
-                                </button>
-                              <button class="btn btn-custom mx-1 my-1" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">
-                                  <i class="fas fa-feather-alt"></i></br>
-                                  Blog
-                                </button>
-                              <button class="btn btn-custom mx-1 my-1" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">
-                                <i class="fas fa-comment-dots"></i></br>
-                                  Contact
-                                </button>
-                            </div>
-                          </div>
-                    </div>
-                </nav>
-            </div>
-            <!-- /Menu -->
             <!-- Main -->
             <div id="main" class="col px-2">
                 <div class="card-group">
-                        <!-- Left -->
-                            <div class="card h-25">
-                                <img src="https://jonathansolis.com/assets/img/avatar-cartoon-horizontal.png" class="card-img-top" alt="...">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title">Jonathan Solis</h5>
-                                    <p class="card-text">@jonathlan</p>
-                                    <p class="icons">
-                                        <a href="https://jonathansolis.com/blog/"><i class="fab fa-wordpress"></i></a>
-                                        <a href="https://www.facebook.com/jonathlan/"><i class="fab fa-facebook-square"></i></a>
-                                        <a href="https://github.com/jonathlan"><i class="fab fa-github-square"></i></a>
-                                        <a href="https://gitlab.com/jonathlan"><i class="fab fa-gitlab"></i></a>
-                                        <a href="https://www.linkedin.com/in/jonathlan/"><i class="fab fa-linkedin"></i></a>
-                                        <a href="https://twitter.com/jonathlan"><i class="fab fa-twitter-square"></i></a>
-                                        <a href="mailto:iam@jonathansolis.com"><i class="fas fa-envelope"></i></a>
-                                    </p>
-                                </div>
-                            </div>
-                        <!-- /Left -->
-                        <!-- Right -->
-                            <div class="card card-scroll mt-md-3">
-                                <div class="card-body">
-                                    <div class="tab-content" id="v-pills-tabContent">
-                                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                                            <h5 class="card-header">About Jonathan</h5>
-                                            <h6 class="card-subtitle mt-2 mb-2 text-muted">Card subtitle</h6>
-                                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, neque autem, provident
-                                                quisquam architecto fugiat dicta quasi ea, voluptatum sequi laboriosam nisi vel voluptas fugit excepturi at
-                                                qui modi consequatur blanditiis ratione molestiae deserunt inventore minus. Corporis, atque quis similique
-                                                porro qui laboriosam accusamus corrupti laudantium autem, repudiandae earum harum.</p>
-                                            <a href="#" class="card-link">Card link</a>
-                                            <a href="#" class="card-link">Another link</a>
+                    <!-- Left -->
+                    <div class="card h-25">
+                        <img src="https://jonathansolis.com/assets/img/avatar-cartoon-horizontal.png"
+                            class="card-img-top" alt="...">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Jonathan Solis</h5>
+                            <p class="card-text">@jonathlan</p>
+                            <p class="icons">
+                                <a href="https://jonathansolis.com/blog/"><i class="fab fa-wordpress"></i></a>
+                                <a href="https://www.facebook.com/jonathlan/"><i class="fab fa-facebook-square"></i></a>
+                                <a href="https://github.com/jonathlan"><i class="fab fa-github-square"></i></a>
+                                <a href="https://gitlab.com/jonathlan"><i class="fab fa-gitlab"></i></a>
+                                <a href="https://www.linkedin.com/in/jonathlan/"><i class="fab fa-linkedin"></i></a>
+                                <a href="https://twitter.com/jonathlan"><i class="fab fa-twitter-square"></i></a>
+                                <a href="mailto:iam@jonathansolis.com"><i class="fas fa-envelope"></i></a>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- /Left -->
+                    <!-- Right -->
+                    <div class="card card-scroll mt-md-3">
+                        <div id="about" class="card-body">
+                            <h5 class="card-header">About Jonathan</h5>
+                            <h6 class="card-subtitle mt-2 mb-2 text-muted">Card subtitle</h6>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium beatae quod fuga, qui praesentium libero veniam accusantium nobis veritatis quisquam deleniti quia, repudiandae officia voluptatem aperiam eaque! Quasi, sit dolore.</p>
+                            <a href="#" class="card-link">Card link</a>
+                            <a href="#" class="card-link">Another link</a>                          
+                        </div>
+                        <div id="fun-facts" class="card-body">
+                            <h5 class="card-header mt-2">Fun facts</h5>
+                            <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique deleniti quis fuga a dolore officiis aut porro, fugit facere tempora?</p>
+
+                        </div>
+                        <div id="blog" class="card-body">
+                            <h5 class="card-header">Blog</h5>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-12 col-md-6 mt-3">
+                                        <div class="card">
+                                            <a target="_self" href="#">
+                                                <img src="./assets/img/article.jpg" class="card-img-top" alt="...">
+                                            </a>
+                                            <div class="card-body">
+                                                <a target="_self" href="#">
+                                                    <h6 class="card-title">Article</h6>
+                                                </a>
+                                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                            </div>
                                         </div>
-                                        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                                            <h5 class="card-header mt-2">Fun facts</h5>
-                                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, neque autem, provident quisquam
-                                                architecto fugiat dicta quasi ea, voluptatum sequi laboriosam nisi vel voluptas fugit excepturi at qui modi
-                                                consequatur blanditiis ratione molestiae deserunt inventore minus. Corporis, atque quis similique porro qui
-                                                laboriosam accusamus corrupti laudantium autem, repudiandae earum harum.</p>
+                                    </div>
+                                    <div class="col-12 col-md-6 mt-3">
+                                        <div class="card">
+                                            <a target="_self" href="#">
+                                                <img src="./assets/img/article.jpg" class="card-img-top" alt="...">
+                                            </a>
+                                            <div class="card-body">
+                                                <a href="#">
+                                                    <h6 class="card-title">Article 2</h6>
+                                                </a>
+                                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                            </div>
                                         </div>
-                                        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                                            <h5 class="card-header">Placeholder3</h5>
+                                    </div>
+                                    <div class="col-12 col-md-6 mt-3">
+                                        <div class="card">
+                                            <a target="_self" href="#">
+                                                <img src="./assets/img/article.jpg" class="card-img-top" alt="...">
+                                            </a>
+                                            <div class="card-body">
+                                                <a href="#">
+                                                    <h6 class="card-title">Article 3</h6>
+                                                </a>
+                                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                            </div>
                                         </div>
-                                        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                                            <h5 class="card-header">Placeholder4</h5>
+                                    </div>
+                                    <div class="col-12 col-md-6 mt-3">
+                                        <div class="card">
+                                            <a target="_self" href="#">
+                                                <img src="./assets/img/article.jpg" class="card-img-top" alt="...">
+                                            </a>
+                                            <div class="card-body">
+                                                <a href="#">
+                                                    <h6 class="card-title">Article 4</h6>
+                                                </a>
+                                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        <!-- /Right -->
+                        </div>
+                        <div id="contact" class="card-body">
+                            <h5 class="card-header">Contact</h5>
+                            <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi quam quo at in libero expedita!</p>
+                        </div>
+                    </div>
+                    <!-- /Right -->
                 </div>
             </div>
             <!-- /Main -->
-        </div>        
+        </div>
     </div>
 
     <!-- Optional JavaScript-->
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
