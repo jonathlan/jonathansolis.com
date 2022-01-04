@@ -16,6 +16,10 @@ body{
     font-size: 40px;
 }
 
+.icon2{
+    color: #2fa3ee;
+}
+
 #main a:link,
 a:visited
 {
