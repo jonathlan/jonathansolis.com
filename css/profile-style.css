@@ -32,8 +32,12 @@ a:visited
 }
 
 .card-scroll{
-    max-height: 37em;
+    max-height: 29em;
     overflow-y: auto;
+}
+
+.card-left{
+    min-height: 31em;
 }
 
 /* Button */
