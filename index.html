@@ -214,13 +214,13 @@
                                     <div class="col-12 col-md-6 mt-3">
                                         <div class="card">
                                             <a target="_self" href="#">
-                                                <img src="./assets/img/article.jpg" class="card-img-top" alt="...">
+                                                <img src="./assets/img/portfolio/gears.jpg" class="card-img-top" alt="gold gears">
                                             </a>
                                             <div class="card-body">
-                                                <a target="_self" href="#">
-                                                    <h6 class="card-title">Product Management</h6>
+                                                <a target="_self" href="#" data-bs-toggle="modal" data-bs-target="#modThisSite">
+                                                    <h6 class="card-title">This site (JonathanSolis.com)</h6>
                                                 </a>
-                                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                <p class="card-text">My own personal web page is created with an automated CI/CD pipeline.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -349,6 +349,32 @@
             <!-- /Main -->
         </div>
     </div>
+
+    <!-- Modals -->
+    <!-- This page -->
+    <div class="modal fade" id="modThisSite" tabindex="-1" aria-labelledby="thisSiteLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="thisSiteLabel">This site - JonathanSolis.com</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>My own personal web page is hosted on a linux server with 2 environments: Staging and Production. </p>
+                <p>The site is created with a CI/CD pipeline in Gitlab, everytime a change is pushed to the server, it publishes to the staging environment, runs an automated testing process using selenium in Java and if everything’s ok, deploys to production.</p>
+                <p>All automated, no manual processes involved.</p>
+                <img src="./assets/img/portfolio/pipeline.png" class="img-fluid" alt="Jonatha Solis pipeline">
+                <p>It is maintained and updated, using issues and milestones. Below is the burndown chart for January-2022</p>
+                <img src="./assets/img/portfolio/burndown-up.png" class="img-fluid" alt="Jonatha Solis burn down and burn up chart">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- /This page -->
+    <!-- /Modals -->
 
     <!-- Optional JavaScript-->
     <!-- Option 1: Bootstrap Bundle with Popper -->
