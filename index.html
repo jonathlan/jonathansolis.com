@@ -357,11 +357,14 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="thisSiteLabel">This site - JonathanSolis.com</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <div class="ms-auto">
+                <a href="https://gitlab.com/jonathlan/jonathansolis.com/-/pipelines?page=1&scope=all&ref=master" target="_blank" class="btn btn-generic">Go to project</a>
+              </div>
+              <button type="button" class="btn-close ms-0" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p>My own personal web page is hosted on a linux server with 2 environments: Staging and Production. </p>
-                <p>The site is created with a <a href="https://gitlab.com/jonathlan/jonathansolis.com/-/pipelines" target="_blank">CI/CD pipeline in Gitlab</a>, everytime a change is pushed to the server, it publishes to the staging environment, runs an automated testing process using selenium in Java and if everything is ok, deploys to production.</p>
+                <p>The site is created with a <a href="https://gitlab.com/jonathlan/jonathansolis.com/-/pipelines?page=1&scope=all&ref=master" target="_blank">CI/CD pipeline in Gitlab</a>, everytime a change is pushed to the server, it publishes to the staging environment, runs an automated testing process using selenium in Java and if everything is ok, deploys to production.</p>
                 <p><strong>All automated, no manual processes involved.</strong></p>
                 <img src="./assets/img/portfolio/pipeline.png" class="img-fluid my-2" alt="Jonathan Solis pipeline">
                 <p>It is maintained and updated, using issues and milestones. Below is the burndown chart as of January-2022</p>
@@ -369,7 +372,8 @@
                 <small class="text-muted my-2">Thumbnail picture: https://pixabay.com/photos/circle-gear-sprocket-cooperation-4868493/</small>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a href="https://gitlab.com/jonathlan/jonathansolis.com/-/pipelines?page=1&scope=all&ref=master" target="_blank" class="btn btn-generic">Go to project</a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
