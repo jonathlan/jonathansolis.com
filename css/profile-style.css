@@ -49,3 +49,15 @@ a:visited
 .btn-custom:active {
     color: #2fa3ee;
 }
+
+/* Generic Button */
+.btn-generic{
+    color: white !important;
+    background-color: #2fa3ee;
+}
+
+.btn-generic:hover{
+    color: #2fa3ee !important;
+    background-color: white;
+    border: 1px solid #2fa3ee;
+}
