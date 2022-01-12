@@ -237,14 +237,14 @@
                                     </div>
                                     <div class="col-12 col-md-6 mt-3">
                                         <div class="card">
-                                            <a target="_self" href="#">
-                                                <img src="./assets/img/article.jpg" class="card-img-top" alt="...">
+                                            <a target="_self" href="#" data-bs-toggle="modal" data-bs-target="#modProxy">
+                                                <img src="./assets/img/portfolio/proxy.png" class="card-img-top" alt="Proxy format architecture">
                                             </a>
                                             <div class="card-body">
-                                                <a href="#">
-                                                    <h6 class="card-title">Financial Markets</h6>
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#modProxy">
+                                                    <h6 class="card-title">Proxy format</h6>
                                                 </a>
-                                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                                <p class="card-text">A simple proxy that will allow users to format the date from 3rd party web servers. Useful as a pre-processor for other tools that do not allow this option.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -406,6 +406,32 @@
         </div>
       </div>
     <!-- /Roadmap -->
+    <!-- Proxy -->
+    <div class="modal fade" id="modProxy" tabindex="-1" aria-labelledby="thisSiteLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="thisSiteLabel">Proxy format</h5>
+              <div class="ms-auto">
+                <a href="https://proxyformatter.herokuapp.com/" target="_blank" class="btn btn-generic">Go to project</a>
+              </div>
+              <button type="button" class="btn-close ms-0" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="./assets/img/portfolio/proxy.png" class="img-fluid" alt="Proxy format architecture">
+                <p>This is a proxy web server which formats dates received from another web server.</p>
+                <p>It is useful for softwares like Portfolio Performance, which only accepts a specific date format as an input.</p>
+                <p>It is created in Ruby and lives in Heroku:</p>
+                <a href="https://proxyformatter.herokuapp.com/" target="_blank" >https://proxyformatter.herokuapp.com/</a>
+            </div>
+            <div class="modal-footer">
+                <a href="https://proxyformatter.herokuapp.com/" target="_blank" class="btn btn-generic">Go to project</a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- /Proxy -->
     <!-- /Modals -->
 
     <!-- Optional JavaScript-->
