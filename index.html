@@ -467,63 +467,149 @@
     <!-- Courses -->
     <div class="modal fade" id="modCourses" tabindex="-1" aria-labelledby="thisSiteLabel" aria-hidden="true">
         <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="thisSiteLabel">Courses & Certifications</h5>
-              <button type="button" class="btn-close ms-0" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="list-group">
-                    <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action">
-                            <div class="d-flex w-100 justify-content-between">
-                              <h5 class="mb-1">Product management</h5>
-                              <small class="text-muted">Sep 2021</small>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="thisSiteLabel">Courses & Certifications</h5>
+                    <button type="button" class="btn-close ms-0" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-relevant-tab" data-bs-toggle="tab" data-bs-target="#nav-relevant"
+                                type="button" role="tab" aria-controls="nav-relevant" aria-selected="true">Relevant</button>
+                            <button class="nav-link" id="nav-marketing-tab" data-bs-toggle="tab" data-bs-target="#nav-marketing"
+                                type="button" role="tab" aria-controls="nav-marketing" aria-selected="false">Marketing</button>
+                            <button class="nav-link" id="nav-technical-tab" data-bs-toggle="tab" data-bs-target="#nav-technical"
+                                type="button" role="tab" aria-controls="nav-technical" aria-selected="false">Technical</button>
+                            <button class="nav-link" id="nav-others-tab" data-bs-toggle="tab" data-bs-target="#nav-others"
+                                type="button" role="tab" aria-controls="nav-others" aria-selected="false">Others</button>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-relevant" role="tabpanel" aria-labelledby="nav-relevant-tab">
+                            <div class="list-group">
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Product management</h5>
+                                                <small class="text-muted">Nov 2021</small>
+                                        </div>
+                                        <p class="mb-1">Platzi</p>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Product management for developers</h5>
+                                                <small class="text-muted">Sep 2021</small>
+                                        </div>
+                                        <p class="mb-1">Platzi</p>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Product management foundations</h5>
+                                                <small class="text-muted">Sep 2021</small>
+                                        </div>
+                                        <p class="mb-1">Platzi</p>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Financial market analysis</h5>
+                                                <small class="text-muted">Jul 2020</small>
+                                        </div>
+                                        <p class="mb-1">International Monetary fund</p>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Automation testing with Selenium and Java</h5>
+                                                <small class="text-muted">May 2018</small>
+                                        </div>
+                                        <p class="mb-1">Cool testers</p>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">ISTQB Certified software tester</h5>
+                                                <small class="text-muted">Oct 2015</small>
+                                        </div>
+                                        <p class="mb-1">International software testing qualifications board</p>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Ruby full stack developer</h5>
+                                                <small class="text-muted">Jun 2018</small>
+                                        </div>
+                                        <p class="mb-1">Johns Hopkins University</p>
+                                    </a>
+                                </div>
                             </div>
-                            <p class="mb-1">Platzi</p>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">
-                          <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">ISTQB Certified software tester</h5>
-                            <small class="text-muted">Oct 2015</small>
-                          </div>
-                          <p class="mb-1">International software testing qualifications board</p>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">
-                          <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">Ruby full stack developer</h5>
-                            <small class="text-muted">Jun 2018</small>
-                          </div>
-                          <p class="mb-1">Johns Hopkins University</p>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">
-                          <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">Financial market analysis</h5>
-                            <small class="text-muted">Jul 2020</small>
-                          </div>
-                          <p class="mb-1">International Monetary fund</p>
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">
-                            <div class="d-flex w-100 justify-content-between">
-                              <h5 class="mb-1">Ruby full stack developer</h5>
-                              <small class="text-muted">Jun 2018</small>
+                        </div>
+                        <div class="tab-pane fade" id="nav-marketing" role="tabpanel" aria-labelledby="nav-marketing-tab">
+                            <div class="list-group">
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Brand positioning in digital media</h5>
+                                                <small class="text-muted">Jun 2021</small>
+                                        </div>
+                                        <p class="mb-1">Platzi</p>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Content marketing</h5>
+                                                <small class="text-muted">Jun 2021</small>
+                                        </div>
+                                        <p class="mb-1">Platzi</p>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Content strategies for LinkedIn</h5>
+                                                <small class="text-muted">Jun 2021</small>
+                                        </div>
+                                        <p class="mb-1">Platzi</p>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Copywriting with storytelling techniques</h5>
+                                                <small class="text-muted">May 2021</small>
+                                        </div>
+                                        <p class="mb-1">Platzi</p>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Communication and creative marketing for brands</h5>
+                                                <small class="text-muted">May 2021</small>
+                                        </div>
+                                        <p class="mb-1">Platzi</p>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Marketing strategies in social networks</h5>
+                                                <small class="text-muted">Mar 2021</small>
+                                        </div>
+                                        <p class="mb-1">Platzi</p>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Personal branding</h5>
+                                                <small class="text-muted">Feb 2019</small>
+                                        </div>
+                                        <p class="mb-1">Platzi</p>
+                                    </a>
+                                </div>
                             </div>
-                          </a>
-                          <a href="#" class="list-group-item list-group-item-action">
-                            <div class="d-flex w-100 justify-content-between">
-                              <h5 class="mb-1">Financial market analysis</h5>
-                              <small class="text-muted">Jul 2020</small>
-                            </div>
-                          </a>
-                      </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-technical" role="tabpanel" aria-labelledby="nav-technical-tab">
+                            Technical
+                        </div>
+                        <div class="tab-pane fade" id="nav-others" role="tabpanel" aria-labelledby="nav-others-tab">
+                            Others
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-          </div>
         </div>
-      </div>
+    </div>
     <!-- /Courses -->
     <!-- /Modals -->
 
