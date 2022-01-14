@@ -61,3 +61,11 @@ a:visited
     background-color: white;
     border: 1px solid #2fa3ee;
 }
+
+/* Modal courses*/
+#nav-tab-courses .nav-link{
+    color: #2fa3ee;
+}
+#nav-tab-courses .nav-link.active{
+    color: #495057;
+}
