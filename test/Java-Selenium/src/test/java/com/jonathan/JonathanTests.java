@@ -18,11 +18,11 @@ public class JonathanTests extends JonathanTestBase {
 	}
 	
 	@Test
-	public void blogIconURL(/*String browser, String article*/) 
+	public void relevantIconURL(/*String browser, String article*/) 
 	{
 		String url = jProp.get("MAIN_URL").asString();
 		setUpPhase2("Chrome", url);		
-		assertTrue("Article not found", jHomePage.blogIconURL());
+		assertTrue("Article not found", jHomePage.relevantIconURL());
 	}
 	
 	@Test
@@ -43,7 +43,7 @@ public class JonathanTests extends JonathanTestBase {
 		setUpPhase2("Chrome", url);
 		
 		assertTrue("Number of icons in the home page is not correct.", 
-				jHomePage.hasEnoughIcons(7));
+				jHomePage.hasEnoughIcons(5));
 	}
 	
 	// Blog home page

@@ -27,8 +27,8 @@ public class JonathanHomePage {
 	@FindBy(how = How.XPATH, using = "//")
 	WebElement photo;
 	
-	@FindBy (how = How.XPATH, using = "//a[@href='https://jonathansolis.com/blog/']/i[@class='fab fa-wordpress']")
-	WebElement blogIcon;
+	@FindBy (how = How.XPATH, using = "//a[@href='https://github.com/jonathlan']/i[@class='fab fa-github-square']")
+	WebElement relevantIcon;
 	
 	@FindBy(how = How.XPATH, using = "//p[@class='icons']")
 	WebElement icons;
@@ -41,10 +41,10 @@ public class JonathanHomePage {
 		return true;
 	}
 	
-	public boolean blogIconURL()
+	public boolean relevantIconURL()
 	{
-		wait.until(ExpectedConditions.visibilityOf(blogIcon));
-		if(blogIcon.isEnabled())
+		wait.until(ExpectedConditions.visibilityOf(relevantIcon));
+		if(relevantIcon.isEnabled())
 			return true;
 		return false;
 	}
