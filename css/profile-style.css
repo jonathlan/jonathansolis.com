@@ -40,6 +40,14 @@ a:visited
     min-height: 31em;
 }
 
+@media (max-width:575px) {
+    #right-panel .card-body:before {
+        height: 65px;
+        content: "";
+        display:block;
+    }
+}
+
 /* Button */
 .btn-custom {
     color: black;
