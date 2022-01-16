@@ -4,7 +4,10 @@ body{
 
 /* Small devices */
 @media (max-width:575px) {
-    #right-panel .card-body:before {
+    #about:before,
+    #portfolio:before,
+    #blog:before,
+    #contact:before {
         height: 65px;
         content: "";
         display:block;
