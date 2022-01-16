@@ -11,6 +11,14 @@ body{
     }
 }
 
+/* Medium devices */
+@media (min-width:576px) {
+    .card-scroll{
+        max-height: 29em;
+        overflow-y: auto;
+    }
+}
+
 /*Navbar settings*/
 .navbar-expand-md .navbar-nav {
   flex-direction: column;
@@ -38,11 +46,6 @@ a:visited
 #main a:hover 
 {
     color: #2fa3ee;
-}
-
-.card-scroll{
-    max-height: 29em;
-    overflow-y: auto;
 }
 
 .card-left{
