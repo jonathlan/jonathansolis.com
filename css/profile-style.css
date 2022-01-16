@@ -2,6 +2,15 @@ body{
     background-image: linear-gradient(to right,#2fa3ee, #128AD8);
 }
 
+/* Small devices */
+@media (max-width:575px) {
+    #right-panel .card-body:before {
+        height: 65px;
+        content: "";
+        display:block;
+    }
+}
+
 /*Navbar settings*/
 .navbar-expand-md .navbar-nav {
   flex-direction: column;
@@ -38,14 +47,6 @@ a:visited
 
 .card-left{
     min-height: 31em;
-}
-
-@media (max-width:575px) {
-    #right-panel .card-body:before {
-        height: 65px;
-        content: "";
-        display:block;
-    }
 }
 
 /* Button */
