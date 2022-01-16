@@ -37,7 +37,7 @@ public class JonathanHomePage {
 	public boolean fotoFound()
 	{
 		wait.until(ExpectedConditions.
-				visibilityOfElementLocated(By.xpath("//html/body/div[1]/div/div[1]/img")));		
+				visibilityOfElementLocated(By.xpath("//*[@id=\"main\"]/div/div[1]/img")));		
 		return true;
 	}
 	
