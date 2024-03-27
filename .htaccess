@@ -10,6 +10,12 @@ deny from 38.180.120.84
 deny from 45.140.19.173
 deny from 45.130.151.173
 
+# Piwigo --BEGIN-- friendly links
+# https://piwigo.org/forum/viewtopic.php?id=17268
+AcceptPathInfo On
+Options +MultiViews
+# Piwigo --END-- friendly links
+
 # php -- BEGIN cPanel-generated handler, do not edit
 # Set the “ea-php82” package as the default “PHP” programming language.
 <IfModule mime_module>
