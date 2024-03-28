@@ -1,5 +1,6 @@
 package com.jonathan.pages;
 
+import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -20,7 +21,7 @@ public class JonathanHomePage {
 	{
 		this.driver = driver;
 		PageFactory.initElements(this.driver, this);
-		wait = new WebDriverWait(driver, 15);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 	}
 	
 	// Elements
