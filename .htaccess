@@ -26,6 +26,11 @@ RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 </IfModule>
 
+#Set cache directive to 1 year
+<filesMatch ".(css|jpg|jpeg|png|gif|js|ico|webp)$">
+Header set Cache-Control "max-age=31536000, public"
+</filesMatch>
+
 # php -- BEGIN cPanel-generated handler, do not edit
 # Set the “ea-php82” package as the default “PHP” programming language.
 <IfModule mime_module>
