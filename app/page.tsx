@@ -45,6 +45,7 @@ function PageController() {
   const isTransitioningRef = useRef(false);
   const lastWheelTime = useRef(0);
   const touchStartY = useRef(0);
+  const touchStartX = useRef(0);
 
   useEffect(() => {
     activeSectionRef.current = activeSection;
@@ -87,12 +88,25 @@ function PageController() {
 
     const handleTouchStart = (e: TouchEvent) => {
       touchStartY.current = e.touches[0].clientY;
+      touchStartX.current = e.touches[0].clientX;
     };
 
     const handleTouchEnd = (e: TouchEvent) => {
       if (document.querySelector('[role="dialog"]')) return;
       const dy = touchStartY.current - e.changedTouches[0].clientY;
-      if (Math.abs(dy) < 60) return;
+      const dx = touchStartX.current - e.changedTouches[0].clientX;
+      // Ignore horizontal swipes and short taps
+      if (Math.abs(dx) > Math.abs(dy)) return;
+      if (Math.abs(dy) < 80) return;
+      // Respect section-scroll boundaries (same logic as wheel)
+      const scrollEl = document.querySelector(".section-scroll") as HTMLElement | null;
+      if (scrollEl) {
+        const { scrollTop, scrollHeight, clientHeight } = scrollEl;
+        const atBottom = scrollTop + clientHeight >= scrollHeight - 8;
+        const atTop = scrollTop <= 8;
+        if (dy > 0 && !atBottom) return;
+        if (dy < 0 && !atTop) return;
+      }
       navigate(dy > 0 ? 1 : -1);
     };
 
