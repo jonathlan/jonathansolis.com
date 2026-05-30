@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { FacebookIcon, GithubIcon, LinkedinIcon, TwitterIcon, MailIcon } from "@/components/SocialIcons";
 import { stagger, fadeUp } from "@/lib/animations";
@@ -17,26 +16,11 @@ export default function Hero() {
             animate="visible"
             className="flex flex-col items-center text-center"
           >
-            {/* Profile photo */}
-            <motion.div variants={fadeUp}>
-              <div className="relative">
-                <div className="absolute inset-0 rounded-full bg-[#2fa3ee]/30 blur-2xl scale-125" />
-                <Image
-                  src="/assets/img/Cover picture 7.png"
-                  alt="Jonathan Solis"
-                  width={200}
-                  height={200}
-                  priority
-                  className="relative w-32 h-32 md:w-44 md:h-44 rounded-full object-cover ring-2 ring-white/20 shadow-2xl"
-                />
-              </div>
-            </motion.div>
-
             {/* Name */}
             <motion.h1
               variants={fadeUp}
-              className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight"
-              style={{ textShadow: "0 0 40px rgba(47,163,238,0.4)" }}
+              className="text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight"
+              style={{ textShadow: "0 0 60px rgba(47,163,238,0.45)" }}
             >
               Jonathan Solis
             </motion.h1>
@@ -44,13 +28,13 @@ export default function Hero() {
             {/* Title */}
             <motion.p
               variants={fadeUp}
-              className="mt-3 text-lg md:text-xl text-white/60 font-light tracking-widest uppercase"
+              className="mt-5 text-xl md:text-2xl text-white/60 font-light tracking-widest uppercase"
             >
               Product Manager
             </motion.p>
 
             {/* Location */}
-            <motion.p variants={fadeUp} className="mt-1 text-sm text-white/35 tracking-wide">
+            <motion.p variants={fadeUp} className="mt-2 text-base text-white/35 tracking-wide">
               Mexico · Italy
             </motion.p>
 
@@ -58,7 +42,7 @@ export default function Hero() {
             <motion.div
               variants={fadeUp}
               data-testid="social-icons"
-              className="flex items-center gap-2 mt-8"
+              className="flex items-center gap-3 mt-10"
             >
               {[
                 { href: "https://www.facebook.com/jonathlan/", label: "Facebook", Icon: FacebookIcon },
@@ -74,9 +58,9 @@ export default function Hero() {
                   aria-label={label}
                   target={href.startsWith("mailto") ? undefined : "_blank"}
                   rel={href.startsWith("mailto") ? undefined : "noopener noreferrer"}
-                  className="flex items-center justify-center w-11 h-11 rounded-full glass glass-hover text-white transition-all duration-200 hover:scale-110"
+                  className="flex items-center justify-center w-13 h-13 rounded-full glass glass-hover text-white transition-all duration-200 hover:scale-110"
                 >
-                  <Icon size={18} />
+                  <Icon size={21} />
                 </a>
               ))}
             </motion.div>
