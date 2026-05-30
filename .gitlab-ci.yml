@@ -33,7 +33,7 @@ publish_stag:
   needs: ["build_app"]
   cache: []
   script:
-    - echo "Runner IP:" && dig +short myip.opendns.com @resolver1.opendns.com || hostname -I
+    - echo "Runner IP:" && (wget -qO- https://checkip.amazonaws.com 2>/dev/null || hostname -i 2>/dev/null || echo "lookup failed")
     - echo "Copy out/ directory to staging server"
     - lftp -u $JS_STAGE_FTP_U,$JS_STAGE_FTP_PWD $JS_ADD -e "set ftp:ssl-allow no; set ftp:passive-mode yes; set net:timeout 30; set net:max-retries 2; set net:reconnect-interval-base 5; mirror -e -R -x .gitlab-ci.yml -x .git -x languages/ -x gallery/ -x blog/ -x test/ -x .m2/ -x links/ --parallel=2 ./out/ / ; quit"
     - echo "Copy complete"
