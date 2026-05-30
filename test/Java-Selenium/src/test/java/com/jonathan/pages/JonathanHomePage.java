@@ -25,20 +25,20 @@ public class JonathanHomePage {
 	}
 	
 	// Elements
-	@FindBy(how = How.XPATH, using = "//")
+	@FindBy(how = How.XPATH, using = "//*[@id=\"main\"]//img")
 	WebElement photo;
-	
-	@FindBy (how = How.XPATH, using = "//a[@href='https://github.com/jonathlan']/i[@class='fab fa-github-square']")
+
+	@FindBy(how = How.XPATH, using = "//a[@data-testid='github-link']")
 	WebElement relevantIcon;
-	
-	@FindBy(how = How.XPATH, using = "//p[@class='icons']")
+
+	@FindBy(how = How.XPATH, using = "//div[@data-testid='social-icons']")
 	WebElement icons;
 	
 	// Methods
 	public boolean fotoFound()
 	{
 		wait.until(ExpectedConditions.
-				visibilityOfElementLocated(By.xpath("//*[@id=\"main\"]/div/div[1]/img")));		
+				visibilityOfElementLocated(By.xpath("//*[@id=\"main\"]//img")));
 		return true;
 	}
 	
@@ -67,9 +67,11 @@ public class JonathanHomePage {
 	 *  false otherwise.
 	 */
 	public boolean hasEnoughIcons(int numOfIcons) {
-		List<WebElement> actualIcons = 
-				icons.findElements(By.xpath("./a/i"));
-		
+		wait.until(ExpectedConditions.
+				visibilityOfElementLocated(By.xpath("//div[@data-testid='social-icons']")));
+		List<WebElement> actualIcons =
+				icons.findElements(By.xpath("./a"));
+
 		if(actualIcons.size() == numOfIcons)
 			return true;
 		else
