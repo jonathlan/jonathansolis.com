@@ -25,8 +25,8 @@ public class JonathanHomePage {
 	}
 	
 	// Elements
-	@FindBy(how = How.XPATH, using = "//*[@id=\"main\"]//img")
-	WebElement photo;
+	@FindBy(how = How.XPATH, using = "//*[@id=\"main\"]//h1")
+	WebElement heroTitle;
 
 	@FindBy(how = How.XPATH, using = "//a[@data-testid='github-link']")
 	WebElement relevantIcon;
@@ -35,10 +35,10 @@ public class JonathanHomePage {
 	WebElement icons;
 	
 	// Methods
-	public boolean fotoFound()
+	public boolean heroTitleFound()
 	{
 		wait.until(ExpectedConditions.
-				visibilityOfElementLocated(By.xpath("//*[@id=\"main\"]//img")));
+				visibilityOfElementLocated(By.xpath("//*[@id=\"main\"]//h1")));
 		return true;
 	}
 	

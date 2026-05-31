@@ -10,11 +10,11 @@ public class JonathanTests extends JonathanTestBase {
 	// Home Page
 	
 	@Test
-	public void FindCoverPhoto() 
+	public void FindHeroTitle()
 	{
 		String url = jProp.get("MAIN_URL").asString();
 		setUpPhase2("Chrome", url);
-		assertTrue("Photo not found", jHomePage.fotoFound());
+		assertTrue("Hero title not found", jHomePage.heroTitleFound());
 	}
 	
 	@Test
