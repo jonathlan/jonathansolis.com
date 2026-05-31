@@ -63,7 +63,7 @@ generic_test:
 deploy_prod:
   image: mwienk/docker-lftp
   stage: deploy
-  needs: ["generic_test"]
+  needs: ["build_app", "generic_test"]
   cache: []
   script:
     - echo "Deploy to production server"
