@@ -22,7 +22,7 @@ build_app:
   artifacts:
     paths:
       - out/
-    expire_in: 1 hour
+    expire_in: 1 day
   only:
     - master
     - development
