@@ -6,19 +6,19 @@ html,
 body {
   overflow: hidden;
   height: 100%;
-  background: #020b18;
+  background: #080810;
 }
 
 /* Glass card utility — barely visible, text reads against the 3D world */
 .glass {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(15, 15, 30, 0.45);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.11);
+  border: 1px solid rgba(150, 120, 200, 0.15);
 }
 
 .glass-hover:hover {
-  background: rgba(255, 255, 255, 0.09);
+  background: rgba(15, 15, 30, 0.65);
 }
 
 /* Thin divider */

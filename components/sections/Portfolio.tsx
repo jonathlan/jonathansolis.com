@@ -3,114 +3,140 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { Sprout, Wrench, type LucideIcon } from "lucide-react";
 import { stagger, fadeUp, slideInLeft } from "@/lib/animations";
 import Modal from "@/components/Modal";
+import { useScroll } from "@/lib/scrollContext";
 
-type Project = {
-  id: string;
+type ServiceId = "build" | "fix";
+
+type Service = {
+  id: ServiceId;
+  icon: LucideIcon;
   title: string;
   description: string;
-  image: string;
-  alt: string;
-  modalTitle: string;
-  actionUrl: string;
-  actionLabel: string;
 };
 
-const projects: Project[] = [
+const services: Service[] = [
   {
-    id: "this-site",
-    title: "This site (JonathanSolis.com)",
-    description: "My personal web page built with an automated CI/CD pipeline.",
-    image: "/assets/img/portfolio/gears.jpg",
-    alt: "Gold gears",
-    modalTitle: "This site — JonathanSolis.com",
-    actionUrl: "https://gitlab.com/jonathlan/jonathansolis.com/-/pipelines",
-    actionLabel: "Go to project",
+    id: "build",
+    icon: Sprout,
+    title: "Building from zero",
+    description:
+      "I've built SaaS tools and cultural heritage platforms. If you have an idea worth building, let's scope it.",
   },
   {
-    id: "roadmap",
-    title: "API Product Roadmap",
-    description: "Product roadmap for an API that enhances an app to display dishes and ingredients dynamically.",
-    image: "/assets/img/portfolio/roadmap-thumb.png",
-    alt: "Roadmap",
-    modalTitle: "Kitchen API — Product Roadmap",
-    actionUrl: "https://trello.com/kitchenapi",
-    actionLabel: "Go to project",
-  },
-  {
-    id: "proxy",
-    title: "Proxy Format",
-    description: "A simple proxy that formats dates from 3rd party web servers. Built in Ruby.",
-    image: "/assets/img/portfolio/proxy.png",
-    alt: "Proxy format architecture",
-    modalTitle: "Proxy Format",
-    actionUrl: "https://proxyformatter.herokuapp.com/",
-    actionLabel: "Go to project",
-  },
-  {
-    id: "websites",
-    title: "10s of Websites",
-    description: "Dozens of websites created and maintained for customers since 2008.",
-    image: "/assets/img/portfolio/websites.jpg",
-    alt: "Web hosting tools",
-    modalTitle: "10s of Websites — Garsol Web Hosting",
-    actionUrl: "https://www.garsolwebhosting.com",
-    actionLabel: "Go to project",
+    id: "fix",
+    icon: Wrench,
+    title: "Fixing what's broken",
+    description:
+      "A product exists but something's wrong. I audit the codebase directly, not just the backlog, then fix it.",
   },
 ];
 
-function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
+function BuildModal({ onClose }: { onClose: () => void }) {
   return (
-    <Modal
-      isOpen={true}
-      onClose={onClose}
-      title={project.modalTitle}
-      actionUrl={project.actionUrl}
-      actionLabel={project.actionLabel}
-    >
-      {project.id === "this-site" && (
-        <>
-          <p>My own personal web page is hosted on a Linux server with 2 environments: Staging and Production.</p>
-          <p>The site is created with a <a href="https://gitlab.com/jonathlan/jonathansolis.com/-/pipelines" target="_blank" rel="noopener noreferrer" className="text-[#2fa3ee] hover:underline">CI/CD pipeline in GitLab</a>. Every time a change is pushed, it publishes to staging, runs automated Selenium tests in Java, and if everything is OK, deploys to production.</p>
-          <p className="font-semibold">All automated, no manual processes involved.</p>
-          <Image src="/assets/img/portfolio/pipeline.png" alt="CI/CD Pipeline" width={600} height={300} className="rounded-xl w-full" />
-          <Image src="/assets/img/portfolio/burndown-up.png" alt="Burndown chart" width={600} height={300} className="rounded-xl w-full" />
-        </>
-      )}
-      {project.id === "roadmap" && (
-        <>
-          <p>This is a product roadmap created during the course <em>Technical Product Manager</em> from Platzi.</p>
-          <p>It is for an API &ldquo;Kitchen API&rdquo; used by the RoloFoods App. Divided in 3 phases, each with 2&ndash;3 sprints. The goal is to create endpoints to update ingredients and dishes according to their availability.</p>
-          <a href="https://trello.com/kitchenapi" target="_blank" rel="noopener noreferrer">
-            <Image src="/assets/img/portfolio/roadmap.png" alt="Kitchen API Roadmap" width={600} height={400} className="rounded-xl w-full hover:opacity-90 transition-opacity" />
+    <Modal isOpen={true} onClose={onClose} title="Build from Zero">
+      {/* Evidence block 1 — Aere (text-only placeholder) */}
+      <div className="mb-6">
+        <h3 className="font-semibold text-gray-900 mb-2">Aere</h3>
+        <p className="text-sm text-gray-600 leading-relaxed">
+          Archaeological sites platform with 3D modeling, built on OpenBuilding.
+        </p>
+      </div>
+
+      {/* Evidence block 2 — API Roadmap */}
+      <div>
+        <h3 className="font-semibold text-gray-900 mb-2">Kitchen API — Product Roadmap</h3>
+        <p className="text-sm text-gray-600 leading-relaxed mb-3">
+          This is a product roadmap created during the course <em>Technical Product Manager</em> from Platzi.
+          It is for an API &ldquo;Kitchen API&rdquo; used by the RoloFoods App. Divided in 3 phases, each
+          with 2&ndash;3 sprints. The goal is to create endpoints to update ingredients and dishes according
+          to their availability.
+        </p>
+        <a href="https://trello.com/kitchenapi" target="_blank" rel="noopener noreferrer">
+          <Image
+            src="/assets/img/portfolio/roadmap.png"
+            alt="Kitchen API Roadmap"
+            width={600}
+            height={400}
+            className="rounded-xl w-full hover:opacity-90 transition-opacity"
+          />
+        </a>
+      </div>
+    </Modal>
+  );
+}
+
+function FixModal({ onClose }: { onClose: () => void }) {
+  return (
+    <Modal isOpen={true} onClose={onClose} title="Fix What's Broken">
+      {/* Evidence block 1 — Proxy Format */}
+      <div className="mb-6">
+        <h3 className="font-semibold text-gray-900 mb-2">Proxy Format</h3>
+        <Image
+          src="/assets/img/portfolio/proxy.png"
+          alt="Proxy format architecture"
+          width={600}
+          height={300}
+          className="rounded-xl w-full mb-3"
+        />
+        <p className="text-sm text-gray-600 leading-relaxed">
+          A proxy web server that formats dates received from another web server. Useful for software
+          like Portfolio Performance which only accepts a specific date format as input.
+        </p>
+        <p className="text-sm text-gray-600 leading-relaxed mt-1">
+          Created in Ruby, hosted on Heroku:{" "}
+          <a
+            href="https://proxyformatter.herokuapp.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline"
+          >
+            proxyformatter.herokuapp.com
           </a>
-        </>
-      )}
-      {project.id === "proxy" && (
-        <>
-          <Image src="/assets/img/portfolio/proxy.png" alt="Proxy format architecture" width={600} height={300} className="rounded-xl w-full" />
-          <p>A proxy web server that formats dates received from another web server. Useful for software like Portfolio Performance which only accepts a specific date format as input.</p>
-          <p>Created in Ruby, hosted on Heroku: <a href="https://proxyformatter.herokuapp.com/" target="_blank" rel="noopener noreferrer" className="text-[#2fa3ee] hover:underline">proxyformatter.herokuapp.com</a></p>
-        </>
-      )}
-      {project.id === "websites" && (
-        <>
-          <p>I established <a href="https://www.garsolwebhosting.com" target="_blank" rel="noopener noreferrer" className="text-[#2fa3ee] hover:underline">Garsol Web Hosting</a> in 2008 and have been a web hosting provider since then, creating and maintaining dozens of websites for customers.</p>
-          <p>I help them with design, hosting, domain, SSL, backup tools and email to make their businesses more successful.</p>
-          <p className="font-medium">Some long-term customers:</p>
-          <Image src="/assets/img/portfolio/henrick.png" alt="HenrickStativ.com" width={600} height={300} className="rounded-xl w-full" />
-          <Image src="/assets/img/portfolio/sisa.png" alt="SuministrosIngenieriayAsesoria.com" width={600} height={300} className="rounded-xl w-full" />
-        </>
-      )}
+        </p>
+      </div>
+
+      {/* Evidence block 2 — Garsol Web Hosting */}
+      <div>
+        <h3 className="font-semibold text-gray-900 mb-2">Garsol Web Hosting</h3>
+        <p className="text-sm text-gray-600 leading-relaxed mb-3">
+          I established{" "}
+          <a
+            href="https://www.garsolwebhosting.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline"
+          >
+            Garsol Web Hosting
+          </a>{" "}
+          in 2008 and have been a web hosting provider since then, creating and maintaining dozens of
+          websites for customers. I help them with design, hosting, domain, SSL, backup tools and
+          email to make their businesses more successful.
+        </p>
+        <Image
+          src="/assets/img/portfolio/henrick.png"
+          alt="HenrickStativ.com"
+          width={600}
+          height={300}
+          className="rounded-xl w-full mb-2"
+        />
+        <Image
+          src="/assets/img/portfolio/sisa.png"
+          alt="SuministrosIngenieriayAsesoria.com"
+          width={600}
+          height={300}
+          className="rounded-xl w-full"
+        />
+      </div>
     </Modal>
   );
 }
 
 export default function Portfolio() {
-  const [openProject, setOpenProject] = useState<string | null>(null);
-  const active = projects.find((p) => p.id === openProject);
+  const [openService, setOpenService] = useState<ServiceId | null>(null);
+  const { scrollToSection } = useScroll();
 
   return (
     <>
@@ -124,52 +150,65 @@ export default function Portfolio() {
             initial="hidden"
             animate="visible"
           >
+            {/* Heading */}
             <motion.div variants={slideInLeft} className="mb-8">
-              <span className="text-[#2fa3ee] text-xs font-semibold uppercase tracking-[0.2em]">Portfolio</span>
-              <h2 className="mt-2 text-3xl md:text-4xl font-bold text-white">
-                My <span className="text-[#2fa3ee]">products</span>
+              <span className="text-primary text-xs font-semibold uppercase tracking-[0.2em]">
+                The path exists.
+              </span>
+              <h2 className="mt-2 text-3xl md:text-4xl font-bold text-white leading-tight">
+                I&apos;ve shipped products for clients across 4 continents.
               </h2>
               <p className="mt-3 text-base md:text-lg text-white/60 leading-7 max-w-2xl">
-                I like to stay up to date by reading and taking courses in multiple domains. These are some products I have created thanks to that knowledge.
+                For two decades I&apos;ve taken digital product ideas from napkin to launch, and
+                rescued products heading off a cliff.
               </p>
             </motion.div>
 
-            <motion.div variants={stagger} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {projects.map((project) => (
+            {/* Micro-copy */}
+            <motion.div variants={fadeUp} className="space-y-1">
+              <p className="text-sm text-white/40">And right now, I&apos;m building one of my own.</p>
+            </motion.div>
+
+            {/* Service cards */}
+            <motion.div variants={stagger} className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+              {services.map(({ id, icon: Icon, title, description }) => (
                 <motion.div
-                  key={project.id}
+                  key={id}
                   variants={fadeUp}
-                  onClick={() => setOpenProject(project.id)}
-                  className="group cursor-pointer glass glass-hover rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
+                  onClick={() => setOpenService(id)}
+                  className="group cursor-pointer glass glass-hover rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 flex flex-col gap-4"
                 >
-                  <div className="relative overflow-hidden h-36">
-                    <Image
-                      src={project.image}
-                      alt={project.alt}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div className="w-12 h-12 rounded-xl bg-secondary/15 flex items-center justify-center">
+                    <Icon size={24} className="text-secondary" />
                   </div>
-                  <div className="p-4">
-                    <h3 className="font-semibold text-white text-sm group-hover:text-[#2fa3ee] transition-colors">
-                      {project.title}
+                  <div>
+                    <h3 className="font-semibold text-white text-base group-hover:text-primary transition-colors">
+                      {title}
                     </h3>
-                    <p className="text-xs text-white/50 mt-1 leading-relaxed">{project.description}</p>
-                    <span className="inline-flex items-center gap-1 text-xs text-[#2fa3ee] font-medium mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                      View details <ExternalLink size={11} />
-                    </span>
+                    <p className="text-sm text-white/55 mt-1.5 leading-relaxed">{description}</p>
                   </div>
+                  <span className="text-xs text-primary font-medium mt-auto">
+                    See examples →
+                  </span>
                 </motion.div>
               ))}
+            </motion.div>
+
+            {/* CTA */}
+            <motion.div variants={fadeUp} className="text-center">
+              <button
+                onClick={() => scrollToSection(3)}
+                className="text-primary text-sm font-medium hover:text-warm transition-colors"
+              >
+                Ready to start walking? →
+              </button>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {active && (
-        <ProjectModal project={active} onClose={() => setOpenProject(null)} />
-      )}
+      {openService === "build" && <BuildModal onClose={() => setOpenService(null)} />}
+      {openService === "fix" && <FixModal onClose={() => setOpenService(null)} />}
     </>
   );
 }

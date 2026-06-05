@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useScroll } from "@/lib/scrollContext";
 
-const sections = ["Hero", "About", "Portfolio", "Blog", "Contact"];
+const sections = ["The Dark", "The Weight", "The Clearing", "How I Help", "Contact"];
 
 export default function DotNav() {
   const { activeSection, scrollToSection } = useScroll();
