@@ -43,7 +43,7 @@ const LOOK_AT_MOBILE: THREE.Vector3[] = [
 ];
 
 const FOVS   = [72, 30, 40, 30, 68];
-const BLOOM  = [0.3, 0.6, 0.2, 1.4, 1.0];
+const BLOOM  = [0.3, 0.6, 0.2, 0.1, 1.0];
 const GROUND_OPACITY = [0, 1, 0, 1, 0];
 
 // Hero world positions: alternating X sides, Z at intervals of -18 (3× original)
@@ -115,6 +115,41 @@ function randSelfRot() {
   return rand(0.003, 0.014);
 }
 
+// Patches a material so its surface color blends vertically (local Y) between
+// `bottom` and `top`. Replaces only the albedo via onBeforeCompile — all PBR
+// shading, metalness/roughness and env reflections still apply on top.
+function applyVerticalGradient<T extends THREE.Material>(
+  material: T,
+  bottom: number,
+  top: number,
+  yMin: number,
+  yMax: number,
+): T {
+  const cBottom = new THREE.Color(bottom);
+  const cTop    = new THREE.Color(top);
+  material.onBeforeCompile = (shader) => {
+    shader.uniforms.uGradBottom = { value: cBottom };
+    shader.uniforms.uGradTop    = { value: cTop };
+    shader.uniforms.uGradMinY   = { value: yMin };
+    shader.uniforms.uGradMaxY   = { value: yMax };
+
+    shader.vertexShader = shader.vertexShader
+      .replace("#include <common>", "#include <common>\nvarying float vGradY;")
+      .replace("#include <begin_vertex>", "#include <begin_vertex>\nvGradY = position.y;");
+
+    shader.fragmentShader = shader.fragmentShader
+      .replace(
+        "#include <common>",
+        "#include <common>\nvarying float vGradY;\nuniform vec3 uGradBottom;\nuniform vec3 uGradTop;\nuniform float uGradMinY;\nuniform float uGradMaxY;"
+      )
+      .replace(
+        "#include <color_fragment>",
+        "#include <color_fragment>\nfloat _g = clamp((vGradY - uGradMinY) / (uGradMaxY - uGradMinY), 0.0, 1.0);\ndiffuseColor.rgb = mix(uGradBottom, uGradTop, _g);"
+      );
+  };
+  return material;
+}
+
 // ─── Component ───────────────────────────────────────────────────────────────
 
 export default function WorldCanvas() {
@@ -184,28 +219,44 @@ export default function WorldCanvas() {
 
     // ── Materials ────────────────────────────────────────────────────────
     const matPearl = trackMat(new THREE.MeshStandardMaterial({
-      color: 0x8080a0, metalness: 0.15, roughness: 0.1,
+      color: 0x72acef, metalness: 0.15, roughness: 0.1,
       envMapIntensity: 0.1,   // low env intensity — RoomEnvironment + ACES was blowing out the sphere
     }));
     const matDarkGloss = trackMat(new THREE.MeshStandardMaterial({
       color: 0x2a2a4a, metalness: 0.8, roughness: 0.1,
       envMapIntensity: 1.0,
     }));
-    const matPurpleGloss = trackMat(new THREE.MeshStandardMaterial({
-      color: 0x8060d0, metalness: 0.2, roughness: 0.05,
-      envMapIntensity: 1.0,
-    }));
     const matBlueCrystal = trackMat(new THREE.MeshStandardMaterial({
       color: 0x6090d0, metalness: 0.5, roughness: 0.1,
       envMapIntensity: 1.0,
-    }));
-    const matWireframe = trackMat(new THREE.MeshBasicMaterial({
-      color: 0x4040a0, wireframe: true,
     }));
     const matGround = trackMat(new THREE.MeshStandardMaterial({
       color: 0x1a1a2e, roughness: 0.4, metalness: 0.3,
       transparent: true, opacity: 0,
     }));
+    const matCrystal = trackMat(new THREE.MeshStandardMaterial({
+      color: 0xffffff, metalness: 0.5, roughness: 0.1,
+      transparent: true, opacity: 0.03,
+    }));
+
+    // ── Hero gradient materials — vertical two-tone (top lighter), per hero ──
+    // yMin/yMax = the hero geometry's local vertical bounds. PBR params mirror
+    // each hero's original material so only the albedo gains the gradient.
+    const matHeroS0 = trackMat(applyVerticalGradient(   // pearl sphere (r=2.5)
+      new THREE.MeshStandardMaterial({ metalness: 0.15, roughness: 0.1, envMapIntensity: 0.1 }),
+      0x4f7cc0, 0x93c2f0, -2.5, 2.5));
+    const matHeroS1 = trackMat(applyVerticalGradient(   // monolith box (h=4.5)
+      new THREE.MeshStandardMaterial({ metalness: 0.8, roughness: 0.1, envMapIntensity: 1.0 }),
+      0x141428, 0x4a4a7a, -2.25, 2.25));
+    const matHeroS2 = trackMat(applyVerticalGradient(   // torus knot (~±1.8)
+      new THREE.MeshStandardMaterial({ metalness: 0.2, roughness: 0.05, envMapIntensity: 1.0 }),
+      0x5a40a0, 0xa585e8, -1.8, 1.8));
+    const matHeroS3 = trackMat(applyVerticalGradient(   // spike cones (h=3.2)
+      new THREE.MeshStandardMaterial({ metalness: 0.5, roughness: 0.1, envMapIntensity: 1.0 }),
+      0x3f6aa8, 0x8fb8f0, -1.6, 1.6));
+    const matHeroS4 = trackMat(applyVerticalGradient(   // wireframe icosahedron (r=3)
+      new THREE.MeshBasicMaterial({ wireframe: true }),
+      0x2a2a70, 0x9090f0, -3, 3));
 
     // ── Lights ───────────────────────────────────────────────────────────
     const keyLight  = new THREE.DirectionalLight(LIGHTS_CONFIG.key[0].color,  LIGHTS_CONFIG.key[0].intensity);
@@ -275,7 +326,7 @@ export default function WorldCanvas() {
       scene.add(group);
 
       const heroGeo = trackGeo(new THREE.SphereGeometry(2.5, segments, segments));
-      const hero    = new THREE.Mesh(heroGeo, matPearl);
+      const hero    = new THREE.Mesh(heroGeo, matHeroS0);
       hero.castShadow = true;
       group.add(hero);
 
@@ -289,7 +340,7 @@ export default function WorldCanvas() {
           mat = matPearl; // first one solid
         } else {
           mat = trackMat(new THREE.MeshStandardMaterial({
-            color: 0xc8c8e0,
+            color: 0xe3aee7,
             metalness: 0.1, roughness: 0.05,
             transparent: true,
             opacity: i >= Math.ceil(totalSats * 0.5) ? 0.2 : 1.0,
@@ -315,12 +366,15 @@ export default function WorldCanvas() {
       scene.add(group);
 
       const heroGeo  = trackGeo(new THREE.BoxGeometry(1.2, 4.5, 1.2));
-      const hero     = new THREE.Mesh(heroGeo, matDarkGloss);
+      const hero     = new THREE.Mesh(heroGeo, matHeroS1);
       hero.castShadow = true;
       group.add(hero);
 
       const discGeo  = trackGeo(new THREE.CylinderGeometry(2.5, 2.5, 0.1, 8));
       const disc     = new THREE.Mesh(discGeo, matDarkGloss);
+      // Drop the disc so its top face meets the box
+      // bases (box height 4.5, centered → base at y = -2.25), so the box sit on it.
+      disc.position.y = -2.25;
       disc.castShadow = true;
       group.add(disc);
 
@@ -338,7 +392,7 @@ export default function WorldCanvas() {
         }));
       }
 
-      sections.push({ group, hero, spinAxis: "x", spinSpeed: 0.002, satellites });
+      sections.push({ group, hero, spinAxis: "y", spinSpeed: 0.002, satellites });
     }
 
     // S2 — Torus Knot
@@ -349,7 +403,7 @@ export default function WorldCanvas() {
 
       const segTube = isMobile ? 128 : 256;
       const heroGeo = trackGeo(new THREE.TorusKnotGeometry(1.4, 0.38, segTube, 16));
-      const hero    = new THREE.Mesh(heroGeo, matPurpleGloss);
+      const hero    = new THREE.Mesh(heroGeo, matHeroS2);
       hero.castShadow = true;
       group.add(hero);
 
@@ -387,8 +441,8 @@ export default function WorldCanvas() {
       const offsets = [-1.2, 0, 1.2];
       let heroMesh: THREE.Mesh | null = null;
       for (let i = 0; i < 3; i++) {
-        const coneGeo = trackGeo(new THREE.ConeGeometry(0.22, 3.2, 8));
-        const cone    = new THREE.Mesh(coneGeo, matBlueCrystal);
+        const coneGeo = trackGeo(new THREE.ConeGeometry(0.5, 3.2, 8));
+        const cone    = new THREE.Mesh(coneGeo, matHeroS3);
         cone.rotation.z  = leans[i];
         cone.position.x  = offsets[i];
         cone.castShadow  = true;
@@ -398,15 +452,18 @@ export default function WorldCanvas() {
 
       const discGeo = trackGeo(new THREE.CylinderGeometry(2, 2, 0.15, 8));
       const disc    = new THREE.Mesh(discGeo, matBlueCrystal);
+      // Drop the disc so its top face (y + half-height 0.075) meets the cone
+      // bases (cone height 3.2, centered → base at y = -1.6), so the cones sit on it.
+      disc.position.y = -1.675;
       disc.castShadow = true;
       group.add(disc);
 
       const satellites: Satellite[] = [];
       const totalSats = Math.max(1, Math.ceil(3 / satDiv));
       for (let i = 0; i < totalSats; i++) {
-        const geo = trackGeo(new THREE.TorusGeometry(0.3, 0.02, 8, 32));
+        const geo = trackGeo(new THREE.TorusGeometry(0.3, 0.1, 8, 32));
         satellites.push(makeSatellite({
-          geometry: geo, material: matBlueCrystal,
+          geometry: geo, material: matCrystal,
           radius: rand(2.5, 4.0),
           speed:  rand(0.01, 0.02),
           tilt:   rand(0, 0.2),   // nearly flat
@@ -430,11 +487,11 @@ export default function WorldCanvas() {
       scene.add(group);
 
       const heroGeo = trackGeo(new THREE.IcosahedronGeometry(3, 2));
-      const hero    = new THREE.Mesh(heroGeo, matWireframe);
+      const hero    = new THREE.Mesh(heroGeo, matHeroS4);
       group.add(hero);
 
-      const ringGeo = trackGeo(new THREE.TorusGeometry(5.5, 0.02, 8, 64));
-      const ring    = new THREE.Mesh(ringGeo, matWireframe);
+      const ringGeo = trackGeo(new THREE.TorusGeometry(4.5, 0.05, 8, 64));
+      const ring    = new THREE.Mesh(ringGeo, matCrystal);
       group.add(ring);
 
       const satellites: Satellite[] = [];
@@ -443,7 +500,7 @@ export default function WorldCanvas() {
         const r   = rand(0.08, 0.12);
         const geo = trackGeo(new THREE.SphereGeometry(r, 16, 16));
         satellites.push(makeSatellite({
-          geometry: geo, material: matPearl,
+          geometry: geo, material: matBlueCrystal,
           radius: rand(3.5, 5.0),
           speed:  rand(0.003, 0.006),
           tilt:   rand(0, Math.PI),
@@ -463,22 +520,24 @@ export default function WorldCanvas() {
     scene.add(ground);
 
     // ── Starfield ────────────────────────────────────────────────────────
-    const starCount = isMobile ? 100 : 200;
+    // Z spans the full camera journey (S0 ~Z+7 → S4 ~Z-65, heroes 0 → -72),
+    // extended past S4 so stars stay in front of the camera in every section.
+    const starCount = isMobile ? 250 : 450;
     for (let i = 0; i < starCount; i++) {
-      const size = rand(0.02, 0.08);
+      const size = rand(0.04, 0.12);
       const geo  = trackGeo(new THREE.PlaneGeometry(size, size));
       const mat  = trackMat(new THREE.MeshBasicMaterial({
         color: 0xffffff,
         transparent: true,
-        opacity: rand(0.15, 0.65),
+        opacity: rand(0.35, 0.9),
         depthWrite: false,
         side: THREE.DoubleSide,
       }));
       const star = new THREE.Mesh(geo, mat);
       star.position.set(
-        rand(-30, 30),
-        rand(-15, 15),
-        rand(-30, 30)
+        rand(-38, 38),
+        rand(-22, 22),
+        rand(-95, 25)
       );
       star.rotation.z = Math.random() * Math.PI;
       scene.add(star);
