@@ -39,9 +39,10 @@ export default function Blog() {
   return (
     <section
       id="blog"
-      className="min-h-screen w-full flex items-center justify-center overflow-hidden"
+      className="min-h-screen w-full flex items-center justify-center md:justify-end overflow-hidden"
     >
-      <div className="section-scroll w-full max-w-4xl mx-auto px-6 py-8 md:py-10 overflow-y-auto max-h-screen">
+      {/* On desktop: content pushed to right side so hero (left) has room */}
+      <div className="section-scroll w-full max-w-4xl md:max-w-[42%] mx-auto md:mx-0 md:mr-[6vw] px-6 py-8 md:py-10 overflow-y-auto max-h-screen">
         <motion.div
           variants={stagger}
           initial="hidden"

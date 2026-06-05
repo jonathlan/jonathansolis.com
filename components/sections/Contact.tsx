@@ -14,8 +14,9 @@ const socials = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="min-h-screen w-full flex items-center justify-center px-6">
-      <div className="w-full max-w-xl mx-auto text-center">
+    <section id="contact" className="min-h-screen w-full flex items-center justify-center md:justify-start px-6">
+      {/* On desktop: content pushed to left side so hero (right) has room */}
+      <div className="w-full max-w-xl mx-auto md:mx-0 md:ml-[6vw] md:max-w-[42%] text-center md:text-left">
         <motion.div
           variants={stagger}
           initial="hidden"
@@ -29,7 +30,7 @@ export default function Contact() {
             >
               Let&apos;s chat!
             </h2>
-            <p className="mt-5 text-base md:text-lg text-white/55 leading-8 max-w-md mx-auto">
+            <p className="mt-5 text-base md:text-lg text-white/55 leading-8 max-w-md mx-auto md:mx-0">
               I&apos;d love to talk. Reach me through social media or drop me an email — I usually respond within a day.
             </p>
           </motion.div>
@@ -45,7 +46,7 @@ export default function Contact() {
           </motion.a>
 
           {/* Social row */}
-          <motion.div variants={fadeUp} className="flex justify-center gap-4 mt-8">
+          <motion.div variants={fadeUp} className="flex justify-center md:justify-start gap-4 mt-8">
             {socials.map(({ icon: Icon, label, url }) => (
               <a
                 key={label}

@@ -7,14 +7,15 @@ import { stagger, fadeUp } from "@/lib/animations";
 
 export default function Hero() {
   return (
-    <section className="min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden px-6 py-12">
-      <div id="main">
+    <section className="min-h-screen w-full flex flex-col items-center justify-center relative overflow-hidden px-6 py-12 md:items-start">
+      {/* On desktop: content pinned to left side so hero (right) has room */}
+      <div id="main" className="mx-auto md:mx-0 md:ml-[6vw] md:max-w-[42%]">
         <div>
           <motion.div
             variants={stagger}
             initial="hidden"
             animate="visible"
-            className="flex flex-col items-center text-center"
+            className="flex flex-col items-center text-center md:items-start md:text-left"
           >
             {/* Name */}
             <motion.h1
