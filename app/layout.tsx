@@ -8,12 +8,12 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Jonathan Solis",
   description:
-    "My name is Jonathan Solis, I do many things apart from software, I love traveling, trekking, and of course, coffee. I practiced martial arts. I am always learning something new and I never give up.",
+    "Digital product guide. I help founders and teams build their first product or rescue one that's lost its way. 20 years of experience across 4 continents.",
   openGraph: {
     url: "https://jonathansolis.com/",
     type: "website",
     title: "Jonathan Solis",
-    description: "Digital products' artisan",
+    description: "I guide teams through the dark of building digital products.",
     images: [
       {
         url: "https://jonathansolis.com/assets/img/rect_social.jpg",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Jonathan Solis",
-    description: "Digital products' artisan",
+    description: "I guide teams through the dark of building digital products.",
     images: ["https://jonathansolis.com/assets/img/rect_social.jpg"],
   },
 };
@@ -48,7 +48,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
       </head>
-      <body className={`${inter.className} bg-[#020b18]`}>
+      <body className={`${inter.className} bg-[#080810]`}>
         <noscript
           dangerouslySetInnerHTML={{
             __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WFWZNP6" height="0" width="0" style="display:none;visibility:hidden"></iframe>`,

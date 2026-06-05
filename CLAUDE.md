@@ -14,6 +14,10 @@ npm run build      # static export to out/
 npx serve out      # preview the static build locally
 ```
 
+## Git workflow
+Always work on a new branch, never commit directly to main or master.
+Branch naming: `feature/<short-description>` or `fix/<short-description>`.
+
 ## CI/CD pipeline
 
 Defined in `.gitlab-ci.yml` with four stages:

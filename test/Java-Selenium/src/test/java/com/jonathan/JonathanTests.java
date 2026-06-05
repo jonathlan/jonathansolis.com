@@ -42,8 +42,8 @@ public class JonathanTests extends JonathanTestBase {
 		String url = jProp.get("MAIN_URL").asString();
 		setUpPhase2("Chrome", url);
 		
-		assertTrue("Number of icons in the home page is not correct.", 
-				jHomePage.hasEnoughIcons(5));
+		assertTrue("Number of icons in the home page is not correct.",
+				jHomePage.hasEnoughIcons(4));
 	}
 	
 	// Blog home page

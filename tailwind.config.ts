@@ -10,7 +10,8 @@ const config: Config = {
     extend: {
       colors: {
         primary: "#2fa3ee",
-        secondary: "#128AD8",
+        secondary: "#8060d0",
+        warm: "#c8a96e",
       },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],

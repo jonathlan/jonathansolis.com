@@ -44,6 +44,10 @@ public class JonathanHomePage {
 	
 	public boolean relevantIconURL()
 	{
+		// Social icons moved to Contact section — navigate there first
+		WebElement contactDot = wait.until(ExpectedConditions.elementToBeClickable(
+				By.cssSelector("[aria-label='Go to Contact']")));
+		contactDot.click();
 		wait.until(ExpectedConditions.visibilityOf(relevantIcon));
 		if(relevantIcon.isEnabled())
 			return true;
@@ -67,6 +71,10 @@ public class JonathanHomePage {
 	 *  false otherwise.
 	 */
 	public boolean hasEnoughIcons(int numOfIcons) {
+		// Social icons moved to Contact section — navigate there first
+		WebElement contactDot = wait.until(ExpectedConditions.elementToBeClickable(
+				By.cssSelector("[aria-label='Go to Contact']")));
+		contactDot.click();
 		wait.until(ExpectedConditions.
 				visibilityOfElementLocated(By.xpath("//div[@data-testid='social-icons']")));
 		List<WebElement> actualIcons =
