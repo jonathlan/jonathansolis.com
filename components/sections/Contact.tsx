@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon, TwitterIcon, FacebookIcon } from "@/components/SocialIcons";
 import { stagger, fadeUp } from "@/lib/animations";
+import { useScroll } from "@/lib/scrollContext";
 
 const socials = [
   {
@@ -30,6 +31,8 @@ const socials = [
 ];
 
 export default function Contact() {
+  const { scrollToSection } = useScroll();
+
   return (
     <section id="contact" className="min-h-screen w-full flex items-center justify-center md:justify-start px-6">
       {/* On desktop: content pushed to left side so hero (right) has room */}
@@ -47,10 +50,10 @@ export default function Contact() {
               className="mt-3 text-4xl md:text-5xl font-bold text-white"
               style={{ textShadow: "0 0 60px rgba(200,160,96,0.3)" }}
             >
-              Ready to build something?
+              Ready to build something great?
             </h2>
             <p className="mt-5 text-base md:text-lg text-white/55 leading-8 max-w-md mx-auto md:mx-0">
-              Send me a message and we&apos;ll figure out if I&apos;m the right guide for your project.
+              Send me a message and we&apos;ll figure out if I&apos;m the right person for your project.
             </p>
           </motion.div>
 
@@ -84,6 +87,15 @@ export default function Contact() {
               </a>
             ))}
           </motion.div>
+
+          {/* Restart — return to the dark */}
+          <motion.button
+            variants={fadeUp}
+            onClick={() => scrollToSection(0)}
+            className="mt-8 text-white/35 text-sm tracking-widest uppercase hover:text-white/70 transition-colors duration-300"
+          >
+            ↑ Return to the dark
+          </motion.button>
         </motion.div>
       </div>
     </section>

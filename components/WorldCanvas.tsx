@@ -14,7 +14,7 @@ import { useScroll } from "@/lib/scrollContext";
 // ─── Module-scope config ────────────────────────────────────────────────────
 
 const cameraPath = new THREE.CatmullRomCurve3([
-  new THREE.Vector3(-5.5, 0,    7),   // S0: camera far left, hero right  (heroZ=0,  cam ~7 ahead)
+  new THREE.Vector3( 6.5, 0,    7),   // S0: camera far left, hero right  (heroZ=0,  cam ~7 ahead)
   new THREE.Vector3( 6.5, 1,   -11),  // S1: camera far right, hero left  (heroZ=-18, cam ~7 ahead)
   new THREE.Vector3(-5.5, 0.5,-29),   // S2: camera far left, hero right  (heroZ=-36, cam ~7 ahead)
   new THREE.Vector3( 6.0, 1.5,-47),   // S3: camera far right, hero left  (heroZ=-54, cam ~7 ahead)
@@ -67,7 +67,7 @@ const LIGHTS_CONFIG: {
   amb:  LightConfig[];
 } = {
   key: [
-    { color: 0x2020ff, intensity: 0.8 },
+    { color: 0x000000, intensity: 0.8 },
     { color: 0x3030aa, intensity: 1.2 },
     { color: 0xffffff, intensity: 3.0 },
     { color: 0x4080ff, intensity: 2.5 },
@@ -244,7 +244,7 @@ export default function WorldCanvas() {
     // each hero's original material so only the albedo gains the gradient.
     const matHeroS0 = trackMat(applyVerticalGradient(   // pearl sphere (r=2.5)
       new THREE.MeshStandardMaterial({ metalness: 0.15, roughness: 0.1, envMapIntensity: 0.1 }),
-      0x4f7cc0, 0x93c2f0, -2.5, 2.5));
+      0x000000, 0x000000, -2.5, 2.5));
     const matHeroS1 = trackMat(applyVerticalGradient(   // monolith box (h=4.5)
       new THREE.MeshStandardMaterial({ metalness: 0.8, roughness: 0.1, envMapIntensity: 1.0 }),
       0x141428, 0x4a4a7a, -2.25, 2.25));
