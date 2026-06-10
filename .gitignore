@@ -34,3 +34,22 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Images
+*.jpg
+*.png
+*.gif
+*.webp
+*.svg
+*.ico
+*.bmp
+*.tiff
+*.tif
+*.webp
+*.svg
+*.ico
+
+# Images in public folder are allowed
+!public/
+
+.playwright-mcp/
