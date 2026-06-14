@@ -28,7 +28,7 @@ const depthVariants: Variants = {
   active: {
     opacity: 1,
     scale: 1,
-    filter: "blur(0px)",
+    filter: "none",
     transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as CubicBezier },
   },
   exit: {
@@ -142,7 +142,7 @@ function PageController() {
           animate="active"
           exit="exit"
           className="absolute inset-0 flex items-center justify-center"
-          style={{ willChange: "transform, opacity, filter" }}
+          style={{ willChange: "transform, opacity" }}
         >
           <ActiveSection />
         </motion.div>
